@@ -36,9 +36,13 @@ import com.google.android.material.snackbar.Snackbar
 
 class PlantListFragment : Fragment() {
 
+
+
     private val viewModel: PlantListViewModel by viewModels {
         Injector.providePlantListViewModelFactory(requireContext())
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,8 +87,10 @@ class PlantListFragment : Fragment() {
         }
     }
 
+
+
     private fun subscribeUi(adapter: PlantAdapter) {
-        viewModel.plants.observe(viewLifecycleOwner) { plants ->
+        viewModel.plantsUsingFlow.observe(viewLifecycleOwner) { plants ->
             adapter.submitList(plants)
         }
     }
